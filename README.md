@@ -82,16 +82,21 @@ cp -R word-safe-editing-ai-agent-skill/skill/word-safe-editing ~/.codex/skills/
 
 Then restart Codex.
 
-## Run the DOCX safety checker
+## Ask your agent to run the checker
 
-~~~bash
-python3 skill/word-safe-editing/scripts/check_docx_safety.py report.docx \
-  --must-contain "Revised conclusion" \
-  --must-not-contain "Old conclusion" \
-  --warn-unreferenced-media
+The checker is a helper for your AI agent. It checks DOCX package structure, required text, forbidden text, broken relationships, and selected media/caption risks before the agent delivers an edited file.
+
+Ask your agent:
+
+~~~text
+After editing the Word document, run the DOCX safety checker from this skill.
+Check that the revised text is present, the old text is gone, and there are no obvious broken media relationships.
+Explain the result in plain language before giving me the final document.
 ~~~
 
-A zero exit status means the selected structural checks passed. It does not replace visual QA or Microsoft Word open/save verification.
+Passing the checker means the selected structural checks passed. It does not replace visual QA or Microsoft Word open/save verification.
+
+Technical users can also run `skill/word-safe-editing/scripts/check_docx_safety.py` directly.
 
 ## Scope, privacy, and safety
 
