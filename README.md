@@ -65,38 +65,15 @@ then tell me when to restart Codex.
 After restarting Codex, ask naturally:
 
 ~~~text
-Please update the conclusion in this Word report without changing
-its formatting, images, comments, or pagination.
+Create a temporary Word document to test this skill.
+Add a short introduction, one table, and one image placeholder.
+Then use $word-safe-editing to make a small wording change safely.
+Run the relevant checks, tell me whether the test passed, and delete the temporary test document and any backup files when finished.
 ~~~
 
 Or explicitly invoke <code>$word-safe-editing</code>.
 
-## Manual install fallback
-
-If you prefer to install it yourself:
-
-~~~bash
-git clone https://github.com/ChrisZhangWG/word-safe-editing-ai-agent-skill.git
-cp -R word-safe-editing-ai-agent-skill/skill/word-safe-editing ~/.codex/skills/
-~~~
-
-Then restart Codex.
-
-## Ask your agent to run the checker
-
-The checker is a helper for your AI agent. It checks DOCX package structure, required text, forbidden text, broken relationships, and selected media/caption risks before the agent delivers an edited file.
-
-Ask your agent:
-
-~~~text
-After editing the Word document, run the DOCX safety checker from this skill.
-Check that the revised text is present, the old text is gone, and there are no obvious broken media relationships.
-Explain the result in plain language before giving me the final document.
-~~~
-
-Passing the checker means the selected structural checks passed. It does not replace visual QA or Microsoft Word open/save verification.
-
-Technical users can also run `skill/word-safe-editing/scripts/check_docx_safety.py` directly.
+If you already have a real Word file to edit, ask the agent to use the skill on that file instead. Keep a backup and ask the agent to explain what it checked before returning the edited document.
 
 ## Scope, privacy, and safety
 
