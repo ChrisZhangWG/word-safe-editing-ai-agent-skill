@@ -12,6 +12,10 @@ Backup, narrow edits, deterministic DOCX checks, Microsoft Word verification, an
 
 <p align="center"><em>Reduces editing risk; it does not guarantee zero document damage.</em></p>
 
+## 15-second visual tour
+
+<p align="center"><img src="docs/assets/visual-walkthrough.gif" alt="Animated tour of the Word Safe Editing workflow" width="100%"></p>
+
 ## Why this skill exists
 
 <p align="center"><img src="docs/assets/direct-vs-safe.png" alt="Unsafe direct AI editing compared with safety-first editing" width="100%"></p>
