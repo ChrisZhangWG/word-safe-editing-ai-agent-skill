@@ -12,7 +12,13 @@ Backup, narrow edits, deterministic DOCX checks, Microsoft Word verification, an
 
 <p align="center"><em>Reduces editing risk; it does not guarantee zero document damage.</em></p>
 
-## Understand it at a glance
+## Why this skill exists
+
+<p align="center"><img src="docs/assets/direct-vs-safe.png" alt="Unsafe direct AI editing compared with safety-first editing" width="100%"></p>
+
+Direct AI editing can appear successful while damaging formatting, tables, images, or internal relationships. This skill adds recoverability and verification before delivery.
+
+## The safety workflow
 
 <p align="center"><img src="docs/assets/visual-workflow.svg" alt="Comparison and workflow diagram" width="100%"></p>
 
@@ -40,6 +46,14 @@ Or explicitly invoke <code>$word-safe-editing</code>.
 4. Validates ZIP, XML, relationships, and requested content boundaries.
 5. Verifies the document opens and saves in Microsoft Word.
 6. Delivers the result—or rolls back if verification fails.
+
+## Three levels of protection
+
+<p align="center"><img src="docs/assets/risk-tiers.png" alt="Fast, Medium, and Full Word editing risk tiers" width="100%"></p>
+
+- **Fast:** small text-only changes with low layout risk.
+- **Medium:** longer wording, page-edge content, highlights, or figure-adjacent text.
+- **Full:** tables, images, captions, fields, page structure, formatting, or recent Word errors.
 
 ## Run the DOCX safety checker
 
