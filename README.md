@@ -1,48 +1,61 @@
-# Word Safe Editing AI Agent Skill
+<p align="center"><img src="docs/assets/hero-banner.png" alt="Word Safe Editing AI Agent Skill" width="100%"></p>
 
-A safety-first Codex skill and deterministic DOCX validation tool for AI agents editing existing Microsoft Word documents.
+<p align="center"><strong>Edit existing Word documents with AI agents—more safely.</strong><br>
+Backup, narrow edits, deterministic DOCX checks, Microsoft Word verification, and rollback.</p>
 
-> [!IMPORTANT]
-> This project reduces editing risk; it cannot guarantee that a Word document will never be damaged. Backups, structural checks, visual review, Microsoft Word open/save gates, and rollback remain essential.
+<p align="center">
+<img alt="Experimental" src="https://img.shields.io/badge/status-experimental-f59e0b">
+<img alt="Python standard library" src="https://img.shields.io/badge/Python-standard%20library-3776ab">
+<img alt="macOS" src="https://img.shields.io/badge/platform-macOS-111827">
+<img alt="MIT" src="https://img.shields.io/badge/license-MIT-22c55e">
+</p>
 
-## Scope
+<p align="center"><em>Reduces editing risk; it does not guarantee zero document damage.</em></p>
 
-The experimental v0.1 release targets Codex on macOS with Microsoft Word and existing `.docx` files. Legacy `.doc`, encrypted or protected documents, and macro-enabled files are not fully supported.
+## Understand it at a glance
 
-## Install
+<p align="center"><img src="docs/assets/visual-workflow.svg" alt="Comparison and workflow diagram" width="100%"></p>
 
-```bash
+## Install in three steps
+
+~~~bash
 git clone https://github.com/ChrisZhangWG/word-safe-editing-ai-agent-skill.git
 cp -R word-safe-editing-ai-agent-skill/skill/word-safe-editing ~/.codex/skills/
-```
+~~~
 
-Restart Codex, then ask naturally or invoke the skill explicitly:
+Restart Codex, then ask naturally:
 
-```text
-Use $word-safe-editing to revise this existing Word report while preserving its formatting, images, comments, and pagination.
-```
+~~~text
+Please update the conclusion in this Word report without changing
+its formatting, images, comments, or pagination.
+~~~
 
-## DOCX safety checker
+Or explicitly invoke <code>$word-safe-editing</code>.
 
-The checker is read-only and uses only Python's standard library:
+## What the agent does
 
-```bash
-python3 skill/word-safe-editing/scripts/check_docx_safety.py report.docx \
-  --must-contain "Revised conclusion" \
-  --must-not-contain "Old conclusion" \
+1. Assesses the edit as Fast, Medium, or Full risk.
+2. Creates a recoverable backup.
+3. Makes the narrowest safe edit.
+4. Validates ZIP, XML, relationships, and requested content boundaries.
+5. Verifies the document opens and saves in Microsoft Word.
+6. Delivers the result—or rolls back if verification fails.
+
+## Run the DOCX safety checker
+
+~~~bash
+python3 skill/word-safe-editing/scripts/check_docx_safety.py report.docx \\
+  --must-contain "Revised conclusion" \\
+  --must-not-contain "Old conclusion" \\
   --warn-unreferenced-media
-```
+~~~
 
-A zero exit status means the selected structural checks passed. It does not replace visual QA or verification in Microsoft Word.
+The checker is read-only and uses only Python's standard library. A zero exit status means the selected structural checks passed; it does not replace visual QA or Word verification.
 
-## Privacy
+## Scope, privacy, and safety
 
-The repository contains only synthetic test documents. Do not publish real client, employer, research, or personal documents as fixtures.
-
-## Project status
-
-Experimental. Automated tests and installation validation are required before v0.1.0 publication.
+Version 0.1 targets **Codex + macOS + Microsoft Word + existing DOCX files**. Legacy DOC, encrypted or protected documents, and macro-enabled files are not fully supported. Tests use only fictional temporary fixtures. Do not publish real private documents as examples.
 
 ## License
 
-MIT License. See [LICENSE](LICENSE).
+[MIT License](LICENSE) © 2026 Chris Zhang.
