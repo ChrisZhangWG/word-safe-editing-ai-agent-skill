@@ -1,0 +1,5 @@
+interface:
+  display_name: "Word Safe Editing"
+  short_description: "Safe edits for existing/template-based Word documents."
+  default_prompt: "Use $word-safe-editing to safely modify this existing or template-based Word document by copying the source first, making narrow edits, preserving images/tables/fields/layout, and verifying it opens and saves in Word without alerts."
+
