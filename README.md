@@ -50,14 +50,19 @@ Example task: remove an outdated figure from Section 3 without leaving a stale c
 
 The important part is the control flow: the edit is not considered finished just because the target text changed. It is finished only after the surrounding document structure still passes the selected checks.
 
-## Install in three steps
+## Install with your AI agent
 
-~~~bash
-git clone https://github.com/ChrisZhangWG/word-safe-editing-ai-agent-skill.git
-cp -R word-safe-editing-ai-agent-skill/skill/word-safe-editing ~/.codex/skills/
+If you already use Codex or another local AI coding agent, you usually do not need to type the commands yourself. Ask your agent:
+
+~~~text
+Install this Codex skill from GitHub:
+https://github.com/ChrisZhangWG/word-safe-editing-ai-agent-skill
+
+Copy skill/word-safe-editing into my local Codex skills folder,
+then tell me when to restart Codex.
 ~~~
 
-Restart Codex, then ask naturally:
+After restarting Codex, ask naturally:
 
 ~~~text
 Please update the conclusion in this Word report without changing
@@ -65,6 +70,17 @@ its formatting, images, comments, or pagination.
 ~~~
 
 Or explicitly invoke <code>$word-safe-editing</code>.
+
+## Manual install fallback
+
+If you prefer to install it yourself:
+
+~~~bash
+git clone https://github.com/ChrisZhangWG/word-safe-editing-ai-agent-skill.git
+cp -R word-safe-editing-ai-agent-skill/skill/word-safe-editing ~/.codex/skills/
+~~~
+
+Then restart Codex.
 
 ## Run the DOCX safety checker
 
